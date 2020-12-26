@@ -32,6 +32,26 @@ namespace KutuphaneOtomasyonu
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            services.Configure<IdentityOptions>(options => { // kayit ol ayarlar
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireUppercase = true;
+
+
+
+
+            }
+
+            
+
+
+
+
+            );
+            
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
