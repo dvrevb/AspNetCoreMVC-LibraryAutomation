@@ -1,4 +1,5 @@
 using KutuphaneOtomasyonu.Data;
+using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,25 +31,19 @@ namespace KutuphaneOtomasyonu
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<KisiselBilgiler>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
             services.Configure<IdentityOptions>(options => { // kayit ol ayarlar
-                options.Password.RequireDigit = true;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
-                options.Password.RequireUppercase = true;
-
-
-
-
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
             }
-
-            
-
-
-
-
             );
             
             
