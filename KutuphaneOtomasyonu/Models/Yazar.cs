@@ -10,5 +10,11 @@ namespace KutuphaneOtomasyonu.Models
         public int Id { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
+
+
+        public string AdSoyad { get
+            {
+                return Ad + " " + Soyad;
+            } }
     }
 }

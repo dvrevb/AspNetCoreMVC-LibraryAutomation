@@ -116,11 +116,7 @@ namespace KutuphaneOtomasyonu.Areas.Identity.Pages.Account
                     Ad = Input.Ad,
                     Soyad=Input.Soyad,
                     Cinsiyet=Input.Cinsiyet,
-                    DogumTarihi=Input.DogumTarihi,
-
-
-                
-                
+                    DogumTarihi=Input.DogumTarihi
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 var addRoleToUser = await _userManager.AddToRoleAsync(user,"user");
