@@ -20,11 +20,28 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: Kitap
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar);
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
+
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar);
-            return View(await applicationDbContext.ToListAsync());
+            var kitaplar = from m in _context.Kitap
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                kitaplar = kitaplar.Where(s => s.EserAdi.Contains(searchString));
+            }
+
+            return View(await kitaplar.ToListAsync());
         }
+
+
+
+
 
         // GET: Kitap/Details/5
         public async Task<IActionResult> Details(int? id)
