@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
+using System.Security.Claims;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
@@ -34,6 +35,9 @@ namespace KutuphaneOtomasyonu.Controllers
         // GET: Kitap/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ClaimsPrincipal currentUser = this.User;
+            var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ViewBag.userId = currentUserID;
             if (id == null)
             {
                 return NotFound();

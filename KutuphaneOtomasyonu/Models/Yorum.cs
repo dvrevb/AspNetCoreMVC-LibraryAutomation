@@ -14,9 +14,10 @@ namespace KutuphaneOtomasyonu.Models
         public DateTime olusturulmaTarihi { get; set; }
         public int KitapId { get; set; }
         public Kitap Kitap { get; set; }  /// FK
-        public string userId { get; set; }
-        public virtual KisiselBilgiler KisiselBilgiler { get; set; }  //fk
-
+        //public string userId { get; set; }
+        // public virtual KisiselBilgiler KisiselBilgiler { get; set; }  //fk
+        public string UserId { get; set; }
+        public KisiselBilgiler User { get; set; }
 
     }
 }

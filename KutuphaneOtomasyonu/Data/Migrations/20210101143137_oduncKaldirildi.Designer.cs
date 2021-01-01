@@ -4,14 +4,16 @@ using KutuphaneOtomasyonu.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KutuphaneOtomasyonu.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210101143137_oduncKaldirildi")]
+    partial class oduncKaldirildi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,37 +166,6 @@ namespace KutuphaneOtomasyonu.Data.Migrations
                     b.HasIndex("YazarId");
 
                     b.ToTable("Kitap");
-                });
-
-            modelBuilder.Entity("KutuphaneOtomasyonu.Models.Odunc", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("KitapId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("gelecegiTarih")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("oduncTarihi")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("uzatilabilirMi")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("KitapId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Odunc");
                 });
 
             modelBuilder.Entity("KutuphaneOtomasyonu.Models.SureliYayin", b =>
@@ -482,19 +453,6 @@ namespace KutuphaneOtomasyonu.Data.Migrations
                         .HasForeignKey("YazarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("KutuphaneOtomasyonu.Models.Odunc", b =>
-                {
-                    b.HasOne("KutuphaneOtomasyonu.Models.Kitap", "Kitap")
-                        .WithMany()
-                        .HasForeignKey("KitapId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("KutuphaneOtomasyonu.Models.KisiselBilgiler", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("KutuphaneOtomasyonu.Models.SureliYayin", b =>

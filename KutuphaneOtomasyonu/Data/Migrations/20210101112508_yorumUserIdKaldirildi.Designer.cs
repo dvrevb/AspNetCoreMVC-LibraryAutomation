@@ -4,14 +4,16 @@ using KutuphaneOtomasyonu.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KutuphaneOtomasyonu.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210101112508_yorumUserIdKaldirildi")]
+    partial class yorumUserIdKaldirildi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,11 +175,11 @@ namespace KutuphaneOtomasyonu.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("KisiselBilgilerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("KitapId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("gelecegiTarih")
                         .HasColumnType("datetime2");
@@ -185,14 +187,17 @@ namespace KutuphaneOtomasyonu.Data.Migrations
                     b.Property<DateTime>("oduncTarihi")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("uzatilabilirMi")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("KitapId");
+                    b.HasIndex("KisiselBilgilerId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("KitapId");
 
                     b.ToTable("Odunc");
                 });
@@ -304,20 +309,20 @@ namespace KutuphaneOtomasyonu.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("KisiselBilgilerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("KitapId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("olusturulmaTarihi")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("KitapId");
+                    b.HasIndex("KisiselBilgilerId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("KitapId");
 
                     b.ToTable("Yorum");
                 });
@@ -486,15 +491,15 @@ namespace KutuphaneOtomasyonu.Data.Migrations
 
             modelBuilder.Entity("KutuphaneOtomasyonu.Models.Odunc", b =>
                 {
+                    b.HasOne("KutuphaneOtomasyonu.Models.KisiselBilgiler", "KisiselBilgiler")
+                        .WithMany()
+                        .HasForeignKey("KisiselBilgilerId");
+
                     b.HasOne("KutuphaneOtomasyonu.Models.Kitap", "Kitap")
                         .WithMany()
                         .HasForeignKey("KitapId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("KutuphaneOtomasyonu.Models.KisiselBilgiler", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("KutuphaneOtomasyonu.Models.SureliYayin", b =>
@@ -520,15 +525,15 @@ namespace KutuphaneOtomasyonu.Data.Migrations
 
             modelBuilder.Entity("KutuphaneOtomasyonu.Models.Yorum", b =>
                 {
+                    b.HasOne("KutuphaneOtomasyonu.Models.KisiselBilgiler", "KisiselBilgiler")
+                        .WithMany()
+                        .HasForeignKey("KisiselBilgilerId");
+
                     b.HasOne("KutuphaneOtomasyonu.Models.Kitap", "Kitap")
                         .WithMany()
                         .HasForeignKey("KitapId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("KutuphaneOtomasyonu.Models.KisiselBilgiler", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
