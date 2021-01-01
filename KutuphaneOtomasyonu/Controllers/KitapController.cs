@@ -19,24 +19,12 @@ namespace KutuphaneOtomasyonu.Controllers
             _context = context;
         }
 
-        // GET: Kitap
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar);
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
+    
 
-        public async Task<IActionResult> Index(string searchString)
+        public IActionResult Index(string searchString)
         {
-            var kitaplar = from m in _context.Kitap
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                kitaplar = kitaplar.Where(s => s.EserAdi.Contains(searchString));
-            }
-
-            return View(await kitaplar.ToListAsync());
+            TempData["searchString"]= searchString;
+            return View();
         }
 
 

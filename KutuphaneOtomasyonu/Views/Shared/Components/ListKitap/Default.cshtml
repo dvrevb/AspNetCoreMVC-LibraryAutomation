@@ -1,26 +1,30 @@
 ﻿@model List<Kitap>
 
-
-
-
-
 @foreach (var item in Model)
 {
-
-
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <a href="#">
-                        <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+                        <img class="img-fluid rounded" src="http://placehold.it/300x500" alt="@item.EserAdi">
                     </a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <h2 class="card-title">@item.EserAdi</h2>
-                    <p class="card-text">@item.Icerik</p>
-                    <p class="card-text">Sayfa Sayısı: @item.SayfaSayisi</p>
-                    <p class="card-text">Dil: @item.DilId</p>
+                    <p class="card-text"><b>Hakkında: </b> @item.Icerik</p>
+                    <p class="card-text"><b>Sayfa Sayısı: </b> @item.SayfaSayisi</p>
+                    <p class="card-text"><b>Dil: </b> @item.Dil.DilAd</p>
+
+                    @if (item.OduncDurumu == false)
+                    {
+                        <p class="card-text" style="color:green"><b>Rafta </b> </p>
+                    }
+                    else
+                    {
+                        <p class="card-text" style="color:red"><b>Ödünç alınmış</b> </p>
+                    }
+
                     <a href="#" class="btn btn-primary">Ayırttır</a>
                     <a class="btn btn-primary" asp-controller="Kitap" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
                 </div>
