@@ -20,11 +20,9 @@ namespace KutuphaneOtomasyonu.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int? kitapId)
         {
 
-
-
             if (kitapId == null)
             {
-                var yorumlar = _db.Yorum.Include(k => k.User).Include(b => b.Kitap).OrderByDescending(p => p.olusturulmaTarihi).Take(5).ToListAsync();
+                var yorumlar = _db.Yorum.Include(k => k.User).Include(b => b.Kitap).OrderByDescending(p => p.olusturulmaTarihi).Take(3).ToListAsync();
                 return View(await yorumlar);
             }
             else
@@ -63,7 +61,5 @@ namespace KutuphaneOtomasyonu.ViewComponents
 
             //}
         }
-
-
     }
 }

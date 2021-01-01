@@ -1,5 +1,7 @@
-﻿using KutuphaneOtomasyonu.Models;
+﻿using KutuphaneOtomasyonu.Data;
+using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,14 +14,17 @@ namespace KutuphaneOtomasyonu.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationDbContext _db;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
+            ViewBag.sonKitap = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).OrderByDescending(p => p.Id).Take(1).ToList();
+            ViewBag.sonSureliYayin = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).OrderByDescending(p => p.Id).Take(1).ToList();
             return View();
         }
 

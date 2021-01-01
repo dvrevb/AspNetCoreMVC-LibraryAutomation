@@ -1,4 +1,4 @@
-﻿@model List<Kitap>
+﻿@model List<SureliYayin>
 
 @foreach (var item in Model)
 {
@@ -10,32 +10,21 @@
                         <img class="img-fluid rounded" src="http://placehold.it/400x500" alt="@item.EserAdi">
                     </a>
                 </div>
-                
                 <div class="col-lg-7">
-
                     <h1 class="card-title"><b>@item.EserAdi</b></h1>
                     <br /><br />
-                    <p class="card-text"><b>Yazar: </b> @item.Yazar.AdSoyad</p>
                     <p class="card-text"><b>ISBN: </b> @item.ISBN</p>
+                    <p class="card-text"><b>Süre/Dönem: </b> @item.Tarih</p>
                     <p class="card-text"><b>Yayınevi: </b> @item.Yayinevi.Ad</p>
                     <p class="card-text"><b>Tür: </b> @item.Tur.TurAd</p>
                     <p class="card-text"><b>Sayfa Sayısı: </b> @item.SayfaSayisi</p>
                     <p class="card-text"><b>Baskı Sayısı: </b> @item.BaskiSayisi</p>
                     <p class="card-text"><b>Dil: </b> @item.Dil.DilAd</p>
 
-
-                    @if (item.OduncDurumu == false)
-                    {
-                        <p class="card-text" style="color:green"><b>Durum: Rafta </b> </p>
-                    }
-                    else
-                    {
-                        <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
-                    }
+                    <p class="card-text" style="color:green"><b>Durum: Rafta. Süreli yayınlar ödünç alınamaz. </b> </p>
                     <br /><br />
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
-                    <a href="#" class="btn btn-primary ">Ayırttır</a>
-                    <a class="btn btn-primary " asp-controller="Kitap" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
+                    <a class="btn btn-primary" asp-controller="SureliYayin" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
                 </div>
             </div>
         </div>

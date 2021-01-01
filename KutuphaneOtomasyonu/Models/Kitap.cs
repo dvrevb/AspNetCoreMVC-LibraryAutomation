@@ -13,7 +13,5 @@ namespace KutuphaneOtomasyonu.Models
         public Yazar Yazar { get; set; }
         [Display(Name = "Ödünç Alınmış mı?")]
         public bool OduncDurumu { get; set; } = false;
-
-
     }
 }

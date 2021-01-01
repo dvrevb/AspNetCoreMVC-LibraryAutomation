@@ -3,87 +3,120 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 card-margin">
+            <div class="card search-form">
+                <div class="card-body p-0">
+                    <form id="search-form" asp-controller="SureliYayin" asp-action="Index" method="get">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-10 col-md-8 col-sm-12 p-0">
+                                        <input type="text" placeholder="Aramanızı giriniz..." class="form-control" id="search" name="SearchString">
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-12 p-0">
+                                        <button type="submit" class="btn btn-base" value="filter">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tarih)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EserAdi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BaskiSayisi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SayfaSayisi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Kapak)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Icerik)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tur)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Yayinevi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dil)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tarih)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EserAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BaskiSayisi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SayfaSayisi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kapak)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Icerik)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tur.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Yayinevi.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dil.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+@await Component.InvokeAsync("ListSureliYayin", new { searchString = TempData["searchString"] })
+
+
+
+
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tarih)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISBN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EserAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BaskiSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SayfaSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kapak)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Icerik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Yayinevi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dil)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarih)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EserAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaskiSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kapak)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Icerik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tur.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yayinevi.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dil.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

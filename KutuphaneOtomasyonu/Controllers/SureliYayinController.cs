@@ -20,11 +20,19 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: SureliYayin
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi);
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
+
+
+        public IActionResult Index(string searchString)
         {
-            var applicationDbContext = _context.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi);
-            return View(await applicationDbContext.ToListAsync());
+            TempData["searchString"] = searchString;
+            return View();
         }
+
 
         // GET: SureliYayin/Details/5
         public async Task<IActionResult> Details(int? id)

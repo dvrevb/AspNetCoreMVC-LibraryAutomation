@@ -23,12 +23,13 @@ namespace KutuphaneOtomasyonu.Controllers
             return View();
         }
         [HttpPost]
-        public void Create(Yorum yorum)
+        public ActionResult Create(Yorum yorum)
         {
             //ClaimsPrincipal currentUser = this.User;
             //var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
            _context.Yorum.Add(yorum);
            _context.SaveChanges();
+            return RedirectToAction("Details", "Kitap", new { id = yorum.KitapId });
         }
     }
 }

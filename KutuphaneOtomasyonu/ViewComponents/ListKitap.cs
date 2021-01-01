@@ -26,7 +26,6 @@ namespace KutuphaneOtomasyonu.ViewComponents
                
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    //kitaplar = kitaplar.Where(s => s.EserAdi.Contains(searchString));
                     var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(s=>s.EserAdi.Contains(searchString)).ToListAsync();
                     return View(await kitaplar);
                 }
@@ -40,27 +39,8 @@ namespace KutuphaneOtomasyonu.ViewComponents
             else
             {
                 var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(x => x.YazarId == yazarId).ToListAsync();
-
-
-               // var kitaplar = _db.Kitap.Where(x => x.YazarId == yazarId).ToListAsync();
                 return View(await kitaplar);
             }
-
-
         }
-
-
-//        public async Task<IViewComponentResult> InvokeAsync()
-//        {
-//            var kitaplar = from m in _db.Kitap
-//                           select m;
-
-//            if (!String.IsNullOrEmpty(searchString))
-//            {
-//                kitaplar = kitaplar.Where(s => s.EserAdi.Contains(searchString));
-//            }
-//            return View(await kitaplar.ToListAsync());
-
-//        }
     }
 }

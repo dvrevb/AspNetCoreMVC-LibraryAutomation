@@ -1,118 +1,68 @@
 ﻿@model KutuphaneOtomasyonu.Models.Kitap
-
+@using System.Security.Claims;
 @{
     ViewData["Title"] = "Details";
-    var userId=ViewBag.userId;
 }
 
 <h1>Details</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-5">
+                <a href="#">
+                    <img class="img-fluid rounded" src="http://placehold.it/400x500" alt="@Model.EserAdi">
+                </a>
+            </div>
+            <div class="col-lg-7">
+                <h1 class="card-title"><b>@Model.EserAdi</b></h1>
+                <p class="card-text"><b>Yazar: </b> @Model.Yazar.AdSoyad</p>
+                <p class="card-text"><b>ISBN: </b> @Model.ISBN</p>
+                <p class="card-text"><b>Yayınevi: </b> @Model.Yayinevi.Ad</p>
+                <p class="card-text"><b>Tür: </b> @Model.Tur.TurAd</p>
+                <p class="card-text"><b>Sayfa Sayısı: </b> @Model.SayfaSayisi</p>
+                <p class="card-text"><b>Baskı Sayısı: </b> @Model.BaskiSayisi</p>
+                <p class="card-text"><b>Dil: </b> @Model.Dil.DilAd</p>
+                <p class="card-text"><b>Hakkında: </b> @Model.Icerik</p>
 
-<div>
-    <h4>Kitap</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Yazar)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Yazar.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OduncDurumu)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OduncDurumu)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ISBN)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ISBN)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EserAdi)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EserAdi)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BaskiSayisi)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BaskiSayisi)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SayfaSayisi)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SayfaSayisi)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kapak)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kapak)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Icerik)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Icerik)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tur)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tur.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Yayinevi)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Yayinevi.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Dil)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Dil.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+                @if (Model.OduncDurumu == false)
+                {
+                    <p class="card-text" style="color:green"><b>Durum: Rafta </b> </p>
+                }
+                else
+                {
+                    <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
+                }
+                <a href="#" class="btn btn-primary ">Ayırttır</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary ">Düzenle</a>
+                <a asp-action="Index" class="btn btn-primary ">Kitaplara geri dön</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="be-comment-block">
-        <h1 class="comments-title">Yorumlar(3)</h1>
+        <h1 class="comments-title">Yorumlar</h1>
+        <hr class="rounded">
+        @await Component.InvokeAsync("ListYorum", Model.Id)
 
+        @if (User.IsInRole("User"))
+        {
 
-
-
-        @await Component.InvokeAsync("ListYorum",Model.Id)
-
-
-
-
-        <form class="form-block" asp-controller="Yorum" asp-action="Create" method="post">
-            <div class="row">
-
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <textarea name="Icerik" class="form-input" required="" placeholder="Your text"></textarea>
-                        <input type="hidden" name="KitapId" value="@Model.Id" />
-                        <input type="hidden" name="olusturulmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
-                        <input type="hidden" name="UserId" value="@userId" />
-
-
+            <form class="form-block" asp-controller="Yorum" asp-action="Create" method="post">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <textarea name="Icerik" class="form-input" required="" placeholder="Yorumunuzu buraya yazın..." cols="140" style="resize:none"></textarea>
+                            <input type="hidden" name="KitapId" value="@Model.Id" />
+                            <input type="hidden" name="olusturulmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
+                            <input type="hidden" name="UserId" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
+                            <input type="submit" value="Gönder" class="btn btn-primary pull-right" />
+                        </div>
                     </div>
                 </div>
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+            </form>
+        }
     </div>
 </div>

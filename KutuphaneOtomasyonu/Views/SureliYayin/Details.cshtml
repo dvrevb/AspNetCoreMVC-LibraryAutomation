@@ -6,73 +6,37 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>SureliYayin</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tarih)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tarih)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ISBN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ISBN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EserAdi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EserAdi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaskiSayisi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaskiSayisi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SayfaSayisi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SayfaSayisi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Kapak)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kapak)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Icerik)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Icerik)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tur)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tur.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Yayinevi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Yayinevi.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dil)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Dil.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+
+
+
+
+
+<h1>Details</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-5">
+                <a href="#">
+                    <img class="img-fluid rounded" src="http://placehold.it/400x500" alt="@Model.EserAdi">
+                </a>
+            </div>
+            <div class="col-lg-7">
+                <h1 class="card-title"><b>@Model.EserAdi</b></h1>
+                <p class="card-text"><b>ISBN: </b> @Model.ISBN</p>
+                <p class="card-text"><b>Süre/Dönem: </b> @Model.Tarih</p>
+                <p class="card-text"><b>Yayınevi: </b> @Model.Yayinevi.Ad</p>
+                <p class="card-text"><b>Tür: </b> @Model.Tur.TurAd</p>
+                <p class="card-text"><b>Sayfa Sayısı: </b> @Model.SayfaSayisi</p>
+                <p class="card-text"><b>Baskı Sayısı: </b> @Model.BaskiSayisi</p>
+                <p class="card-text"><b>Dil: </b> @Model.Dil.DilAd</p>
+                <p class="card-text"><b>Hakkında: </b> @Model.Icerik</p>
+
+
+                    <p class="card-text" style="color:green"><b>Durum: Rafta. Süreli yayınlar ödünç alınamaz </b> </p>               
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary ">Düzenle</a>
+                <a asp-action="Index" class="btn btn-primary ">Kitaplara geri dön</a>
+            </div>
+        </div>
+    </div>
 </div>
