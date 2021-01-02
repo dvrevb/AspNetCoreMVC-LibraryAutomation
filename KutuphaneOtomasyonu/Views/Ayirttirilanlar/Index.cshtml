@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Ayirttirilanlar>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kitap.EserAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ayirttirmaTarihi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kitap.EserAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ayirttirmaTarihi)
+            </td>
+            <td>
+                <form asp-controller="Odunc" asp-action="Create" method="post" style="display:inline-block">
+
+                    <input type="hidden" name="KitapId" value="@item.KitapId" />
+                    <input type="hidden" name="UserId" value="@item.UserId" />
+                    <input type="hidden" name="oduncTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
+                    <input type="hidden" name="gelecegiTarih" value="@DateTime.UtcNow.AddDays(15)" />
+                    <input type="hidden" name="ayirtmaId" value="@item.Id" />
+
+                    <input type="submit" value="Ödünç Ver" class="btn btn-primary" />
+                </form>
+
+
+                <form asp-action="Delete" method="post" style="display:inline-block">
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <input type="submit" value="Sil" class="btn btn-primary" />
+                </form>
+
+            
+
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

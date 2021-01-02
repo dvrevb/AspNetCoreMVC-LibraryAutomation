@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Models
 {
-    public class Yorum
+    public class Ayirttirilanlar
     {
         public int Id { get; set; }
-        [Required]
-        public string Icerik { get; set; }
-        public DateTime olusturulmaTarihi { get; set; }
+        [Display(Name = "Talep Tarihi")]
+        public DateTime ayirttirmaTarihi { get; set; }
         public int KitapId { get; set; }
         public Kitap Kitap { get; set; }  /// FK
+        [Display(Name ="Kullanıcı")]
         public string UserId { get; set; }
-        public KisiselBilgiler User { get; set; }
-
+        public KisiselBilgiler User { get; set; }//fk
     }
 }

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+@*<h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -75,8 +75,59 @@
             }
         </section>
     </div>
+</div>*@
+
+
+
+
+
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    
+                    <form id="login-form" class="form" action="" method="post">
+                        <h3 class="text-center text-info">Login</h3>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+
+
+                            <label asp-for="Input.RememberMe" class="text-info checkbox">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label><br />
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <a class="text-info" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a><br />
+                            <a class="text-info" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Kayıt Ol</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+
+
+
+
+

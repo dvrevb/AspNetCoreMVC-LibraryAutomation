@@ -33,6 +33,6 @@ namespace KutuphaneOtomasyonu.Data
         public DbSet<Yazar> Yazar { get; set; }
         public DbSet<Yorum> Yorum { get; set; }
         public DbSet<Odunc>Odunc { get; set; }
-        
+        public DbSet<Ayirttirilanlar> Ayirttirilanlar { get; set; }
     }
 }
