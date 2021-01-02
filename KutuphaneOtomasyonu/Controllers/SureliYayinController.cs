@@ -46,6 +46,7 @@ namespace KutuphaneOtomasyonu.Controllers
                 .Include(s => s.Dil)
                 .Include(s => s.Tur)
                 .Include(s => s.Yayinevi)
+                .Include(s=>s.Raf)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (sureliYayin == null)
             {
@@ -58,9 +59,10 @@ namespace KutuphaneOtomasyonu.Controllers
         // GET: SureliYayin/Create
         public IActionResult Create()
         {
-            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "Id");
-            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id");
-            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id");
+            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "DilAd");
+            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd");
+            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad");
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo");
             return View();
         }
 
@@ -69,7 +71,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId")] SureliYayin sureliYayin)
+        public async Task<IActionResult> Create([Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] SureliYayin sureliYayin)
         {
             if (ModelState.IsValid)
             {
@@ -77,9 +79,10 @@ namespace KutuphaneOtomasyonu.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "Id", sureliYayin.DilId);
-            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id", sureliYayin.TurId);
-            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id", sureliYayin.YayineviId);
+            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "DilAd", sureliYayin.DilId);
+            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd", sureliYayin.TurId);
+            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad", sureliYayin.YayineviId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo", sureliYayin.RafId);
             return View(sureliYayin);
         }
 
@@ -96,9 +99,10 @@ namespace KutuphaneOtomasyonu.Controllers
             {
                 return NotFound();
             }
-            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "Id", sureliYayin.DilId);
-            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id", sureliYayin.TurId);
-            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id", sureliYayin.YayineviId);
+            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "DilAd", sureliYayin.DilId);
+            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd", sureliYayin.TurId);
+            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad", sureliYayin.YayineviId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo", sureliYayin.RafId);
             return View(sureliYayin);
         }
 
@@ -107,7 +111,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId")] SureliYayin sureliYayin)
+        public async Task<IActionResult> Edit(int id, [Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] SureliYayin sureliYayin)
         {
             if (id != sureliYayin.Id)
             {
@@ -134,9 +138,10 @@ namespace KutuphaneOtomasyonu.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "Id", sureliYayin.DilId);
-            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id", sureliYayin.TurId);
-            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id", sureliYayin.YayineviId);
+            ViewData["DilId"] = new SelectList(_context.Dil, "Id", "DilAd", sureliYayin.DilId);
+            ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd", sureliYayin.TurId);
+            ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad", sureliYayin.YayineviId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo", sureliYayin.RafId);
             return View(sureliYayin);
         }
 

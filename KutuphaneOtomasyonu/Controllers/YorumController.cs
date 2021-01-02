@@ -31,5 +31,37 @@ namespace KutuphaneOtomasyonu.Controllers
            _context.SaveChanges();
             return RedirectToAction("Details", "Kitap", new { id = yorum.KitapId });
         }
+
+
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var yorum = _context.Yorum.FirstOrDefault(m => m.Id == id);
+
+            if (yorum == null)
+            {
+                return NotFound();
+            }
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int Id)
+        {
+            var yorum = _context.Yorum.Find(Id);
+            _context.Yorum.Remove(yorum);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
+
     }
 }

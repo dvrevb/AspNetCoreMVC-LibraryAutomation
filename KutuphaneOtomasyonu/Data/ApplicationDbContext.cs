@@ -34,5 +34,6 @@ namespace KutuphaneOtomasyonu.Data
         public DbSet<Yorum> Yorum { get; set; }
         public DbSet<Odunc>Odunc { get; set; }
         public DbSet<Ayirttirilanlar> Ayirttirilanlar { get; set; }
+        public DbSet<KutuphaneOtomasyonu.Models.Raf> Raf { get; set; }
     }
 }

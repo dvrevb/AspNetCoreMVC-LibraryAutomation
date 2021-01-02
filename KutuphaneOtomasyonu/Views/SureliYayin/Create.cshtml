@@ -1,12 +1,11 @@
 ﻿@model KutuphaneOtomasyonu.Models.SureliYayin
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Süreli Yayın Oluştur";
 }
 
-<h1>Create</h1>
+<h1>Süreli Yayın Ekle</h1>
 
-<h4>SureliYayin</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -49,25 +48,29 @@
             </div>
             <div class="form-group">
                 <label asp-for="TurId" class="control-label"></label>
-                <select asp-for="TurId" class ="form-control" asp-items="ViewBag.TurId"></select>
+                <select asp-for="TurId" class="form-control" asp-items="ViewBag.TurId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RafId" class="control-label"></label>
+                <select asp-for="RafId" class="form-control" asp-items="ViewBag.RafId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="YayineviId" class="control-label"></label>
-                <select asp-for="YayineviId" class ="form-control" asp-items="ViewBag.YayineviId"></select>
+                <select asp-for="YayineviId" class="form-control" asp-items="ViewBag.YayineviId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DilId" class="control-label"></label>
-                <select asp-for="DilId" class ="form-control" asp-items="ViewBag.DilId"></select>
+                <select asp-for="DilId" class="form-control" asp-items="ViewBag.DilId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Ekle" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Listeye Geri Dön</a>
 </div>
 
 @section Scripts {

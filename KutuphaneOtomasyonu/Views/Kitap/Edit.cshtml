@@ -1,12 +1,10 @@
 ﻿@model KutuphaneOtomasyonu.Models.Kitap
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Kitap Düzenle";
 }
 
-<h1>Edit</h1>
-
-<h4>Kitap</h4>
+<h1>Kitap Düzenle</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -59,6 +57,11 @@
                 <span asp-validation-for="TurId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="RafId" class="control-label"></label>
+                <select asp-for="RafId" class="form-control" asp-items="ViewBag.RafId"></select>
+                <span asp-validation-for="RafId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="YayineviId" class="control-label"></label>
                 <select asp-for="YayineviId" class="form-control" asp-items="ViewBag.YayineviId"></select>
                 <span asp-validation-for="YayineviId" class="text-danger"></span>
@@ -69,14 +72,14 @@
                 <span asp-validation-for="DilId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Listeye Geri Dön</a>
 </div>
 
 @section Scripts {

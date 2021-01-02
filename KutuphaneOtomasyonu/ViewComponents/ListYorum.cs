@@ -22,7 +22,7 @@ namespace KutuphaneOtomasyonu.ViewComponents
 
             if (kitapId == null)
             {
-                var yorumlar = _db.Yorum.Include(k => k.User).Include(b => b.Kitap).OrderByDescending(p => p.olusturulmaTarihi).Take(3).ToListAsync();
+                var yorumlar = _db.Yorum.Include(k => k.User).Include(b => b.Kitap).OrderByDescending(p => p.olusturulmaTarihi).ToListAsync();
                 return View(await yorumlar);
             }
             else

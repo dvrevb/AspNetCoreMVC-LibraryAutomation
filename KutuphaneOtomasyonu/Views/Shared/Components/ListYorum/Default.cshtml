@@ -11,17 +11,28 @@
             </a>
         </div>
         <div class="be-comment-content">
+            <div class="row">
 
-            <span class="be-comment-name">
-                <a href="blog-detail-2.html">@item.User.Ad @item.User.Soyad</a>
-            </span>
-            <span class="be-comment-time">
-                <i class="fa fa-clock-o"></i>
-                @item.olusturulmaTarihi
-            </span>
+                <div class="be-comment-name col-lg-4">
+                    <a href="blog-detail-2.html">@item.User.UserName</a>
+                </div>
+                <div class="be-comment-time col-lg-8">
+                    <i class="fa fa-clock-o"></i>
+                    @item.olusturulmaTarihi
+                    <form asp-controller="Yorum" asp-action="Delete" method="post">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <button type="submit" class="btn fas fa-trash " style="float:right" />
+                    </form>
+                </div>
+
+
+
+
+            </div>
+
 
             <p class="be-comment-text">
-               @item.Icerik
+                @item.Icerik
             </p>
         </div>
     </div>

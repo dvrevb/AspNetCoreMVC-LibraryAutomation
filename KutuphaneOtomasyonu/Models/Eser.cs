@@ -9,6 +9,7 @@ namespace KutuphaneOtomasyonu.Models
     public class Eser
     {
         public int Id { get; set; }
+        [StringLength(13,MinimumLength =13,ErrorMessage ="ISBN 13 hane olmalıdır")]
         public string ISBN { get; set; }
         [Display(Name ="Eser Adı")]
         public string EserAdi { get; set; }
@@ -23,13 +24,14 @@ namespace KutuphaneOtomasyonu.Models
         [Display(Name = "Tür")]
         public int TurId { get; set; }
         public Tur Tur { get; set; }//FK
-        
+        [Display(Name = "Yayınevi")]
         public int YayineviId { get; set; }
-        [Display(Name = "Yayınevi Adı")]
         public Yayinevi Yayinevi { get; set; } // FK
-        
-        public int DilId { get; set; }
         [Display(Name = "Dil")]
+        public int DilId { get; set; }
         public Dil Dil { get; set; }
+        [Display(Name = "Raf")]
+        public int RafId { get; set; }
+        public Raf Raf { get; set; }   ///fk
     }
 }

@@ -111,59 +111,67 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input asp-for="Input.Ad" class="form-control" placeholder="Adınız.." /><br />
-                    <span asp-validation-for="Input.Ad" class="text-danger"></span>
+                    <input asp-for="Input.Ad" class="form-control" placeholder="Adınız.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.Ad" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input asp-for="Input.Soyad" class="form-control" placeholder="Soyadınız.." /><br />
-                    <span asp-validation-for="Input.Soyad" class="text-danger"></span>
+                    <input asp-for="Input.Soyad" class="form-control" placeholder="Soyadınız.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.Soyad" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                     </div>
                     <input type="date" asp-for="Input.DogumTarihi" class="form-control" />
-                    <span asp-validation-for="Input.DogumTarihi" class="text-danger"></span>
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.DogumTarihi" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-transgender"></i> </span>
                     </div>
                     <select asp-for="Input.Cinsiyet" asp-items="Html.GetEnumSelectList<Cinsiyet>()"></select>
-                    <span asp-validation-for="Input.Cinsiyet" class="text-danger"></span>
+
                 </div> <!-- form-group end.// -->
+                <span asp-validation-for="Input.Cinsiyet" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input asp-for="Input.Email" class="form-control" placeholder="Email.." /><br />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input asp-for="Input.KullaniciAdi" class="form-control" placeholder="Kullanıcı adı.." /><br />
-                    <span asp-validation-for="Input.KullaniciAdi" class="text-danger"></span>
+                    <input asp-for="Input.KullaniciAdi" class="form-control" placeholder="Kullanıcı adı.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.KullaniciAdi" class="text-danger"></span>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input asp-for="Input.Password" class="form-control" placeholder="Şifreniz.." /><br />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Şifreniz.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Şifreniz tekrar.." /><br />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Şifreniz tekrar.." />
+
                 </div> <!-- form-group// -->
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div> <!-- form-group// -->

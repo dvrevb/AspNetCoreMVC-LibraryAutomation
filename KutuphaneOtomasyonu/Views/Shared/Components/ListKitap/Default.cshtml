@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <a href="#">
-                        <img class="img-fluid rounded" src="http://placehold.it/400x500" alt="@item.EserAdi">
+                        <img class="img-fluid rounded"  style="height:500px;width:400px" src="@item.Kapak" alt="@item.EserAdi">
                     </a>
                 </div>
 
@@ -27,24 +27,27 @@
                     @if (item.OduncDurumu == false)
                     {
                         <p class="card-text" style="color:green"><b>Durum: Rafta </b> </p>
+                        <br /><br />
+                        @if (User.IsInRole("User"))
+                        {
+                            <form asp-controller="Ayirttirilanlar" asp-action="Create" method="post" style="display:inline-block">
+
+                                <input type="hidden" name="KitapId" value="@item.Id" />
+                                <input type="hidden" name="ayirttirmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
+                                <input type="hidden" name="UserId" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
+                                <input type="submit" value="Ayırttır" class="btn btn-primary" />
+                            </form>
+                        }
                     }
                     else
                     {
                         <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
+                        <br /><br />
                     }
-                    <br /><br />
+
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
                     <a class="btn btn-primary " asp-controller="Kitap" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
-                    @if (User.IsInRole("User"))
-                    {
-                        <form asp-controller="Ayirttirilanlar" asp-action="Create" method="post" style="display:inline-block">
 
-                            <input type="hidden" name="KitapId" value="@item.Id" />
-                            <input type="hidden" name="ayirttirmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
-                            <input type="hidden" name="UserId" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
-                            <input type="submit" value="Ayırttır" class="btn btn-primary" />
-                        </form>
-                    }
 
                 </div>
             </div>

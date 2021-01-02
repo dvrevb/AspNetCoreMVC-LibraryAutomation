@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <a href="#">
-                    <img class="img-fluid rounded" src="http://placehold.it/400x500" alt="@Model.EserAdi">
+                    <img class="img-fluid rounded" style="height:500px;width:400px" src="@Model.Kapak" alt="@Model.EserAdi">
                 </a>
             </div>
             <div class="col-lg-7">
@@ -28,13 +28,25 @@
                 @if (Model.OduncDurumu == false)
                 {
                     <p class="card-text" style="color:green"><b>Durum: Rafta </b> </p>
+                    <br /><br />
+                    @if (User.IsInRole("User"))
+                    {
+                        <form asp-controller="Ayirttirilanlar" asp-action="Create" method="post" style="display:inline-block">
+
+                            <input type="hidden" name="KitapId" value="@Model.Id" />
+                            <input type="hidden" name="ayirttirmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
+                            <input type="hidden" name="UserId" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
+                            <input type="submit" value="Ayırttır" class="btn btn-primary" />
+                        </form>
+                    }
                 }
                 else
                 {
                     <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
+                    <br /><br />
                 }
-                <a href="#" class="btn btn-primary ">Ayırttır</a>
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary ">Düzenle</a>
+
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
                 <a asp-action="Index" class="btn btn-primary ">Kitaplara geri dön</a>
             </div>
         </div>
@@ -49,7 +61,7 @@
 
         @if (User.IsInRole("User"))
         {
-
+            <hr class="rounded">
             <form class="form-block" asp-controller="Yorum" asp-action="Create" method="post">
                 <div class="row">
                     <div class="col-xs-12">
@@ -58,7 +70,7 @@
                             <input type="hidden" name="KitapId" value="@Model.Id" />
                             <input type="hidden" name="olusturulmaTarihi" value="@DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss")" />
                             <input type="hidden" name="UserId" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
-                            <input type="submit" value="Gönder" class="btn btn-primary pull-right" />
+                            <input type="submit" value="Gönder" class="btn btn-primary" style="float:right" />
                         </div>
                     </div>
                 </div>

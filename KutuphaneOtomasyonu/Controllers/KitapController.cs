@@ -44,6 +44,7 @@ namespace KutuphaneOtomasyonu.Controllers
                 .Include(k => k.Tur)
                 .Include(k => k.Yayinevi)
                 .Include(k => k.Yazar)
+                .Include(k=>k.Raf)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (kitap == null)
             {
@@ -60,6 +61,7 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd");
             ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad");
             ViewData["YazarId"] = new SelectList(_context.Yazar, "Id", "AdSoyad");
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo");
             return View();
         }
 
@@ -68,7 +70,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId")] Kitap kitap)
+        public async Task<IActionResult> Create([Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
         {
             if (ModelState.IsValid)
             {
@@ -80,6 +82,7 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["TurId"] = new SelectList(_context.Tur, "Id", "TurAd", kitap.TurId);
             ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Ad", kitap.YayineviId);
             ViewData["YazarId"] = new SelectList(_context.Yazar, "Id", "AdSoyad", kitap.YazarId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo",kitap.RafId);
             return View(kitap);
         }
 
@@ -100,6 +103,7 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id", kitap.TurId);
             ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id", kitap.YayineviId);
             ViewData["YazarId"] = new SelectList(_context.Yazar, "Id", "Id", kitap.YazarId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo", kitap.RafId);
             return View(kitap);
         }
 
@@ -108,7 +112,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId")] Kitap kitap)
+        public async Task<IActionResult> Edit(int id, [Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
         {
             if (id != kitap.Id)
             {
@@ -139,6 +143,7 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["TurId"] = new SelectList(_context.Tur, "Id", "Id", kitap.TurId);
             ViewData["YayineviId"] = new SelectList(_context.Yayinevi, "Id", "Id", kitap.YayineviId);
             ViewData["YazarId"] = new SelectList(_context.Yazar, "Id", "Id", kitap.YazarId);
+            ViewData["RafId"] = new SelectList(_context.Raf, "Id", "RafNo", kitap.RafId);
             return View(kitap);
         }
 

@@ -27,6 +27,17 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewBag.sonSureliYayin = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).OrderByDescending(p => p.Id).Take(1).ToList();
             return View();
         }
+        public IActionResult ara(string SearchString,string Secim)
+        {
+            if (Secim=="Kitap")
+            {
+                return RedirectToAction("Index","Kitap",new { SearchString=SearchString});
+            }
+            else
+            {
+                return RedirectToAction("Index", "SureliYayin", new { SearchString = SearchString });
+            }         
+        }
 
         public IActionResult Privacy()
         {

@@ -1,31 +1,26 @@
 ﻿@model KutuphaneOtomasyonu.Models.Eser
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Kütüphane";
     var sonKitap = TempData["sonKitap"];
     var sonSureliYayin = TempData["sonSureliYayin"];
 }
 
-
 <br />
 <br />
-
 
 <div class="container">
     <div class="row">
         <div class="col-lg-12 card-margin">
             <div class="card search-form">
                 <div class="card-body p-0">
-                    <form id="search-form" asp-controller="Kitap" asp-action="Index" method="get">
+                    <form id="search-form" asp-action="ara" method="get">
                         <div class="row">
                             <div class="col-12">
                                 <div class="row no-gutters">
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>Tüm Eserler</option>
-                                            <option>Kitap</option>
-                                            <option>Süreli Yayın</option>
-                                            <option>Dil</option>
-                                            <option>Yazar</option>
+                                        <select class="form-control" id="exampleFormControlSelect1" name="Secim">
+                                            <option value="Kitap">Kitap</option>
+                                            <option value="SureliYayin">Süreli Yayın</option>            
                                         </select>
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-sm-12 p-0">
@@ -72,7 +67,7 @@
                     @await Component.InvokeAsync("ListYorum")
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Tüm Yorumlar</a>
+                    <a asp-controller="Yorum" asp-action="Index" class="btn btn-primary">Tüm Yorumları Gör</a>
                 </div>
             </div>
         </div>
