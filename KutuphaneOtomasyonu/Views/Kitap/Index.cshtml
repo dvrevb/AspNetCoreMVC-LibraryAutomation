@@ -4,7 +4,12 @@
     ViewData["Title"] = "Kitaplar";
 }
 
-
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Yeni Oluştur</a>
+    </p>
+}
 <div class="container">
     <div class="row">
         <div class="col-lg-12 card-margin">
@@ -33,4 +38,4 @@
 </div>
 
 
-@await Component.InvokeAsync("ListKitap",new { searchString = TempData["searchString"] })
+@await Component.InvokeAsync("ListKitap", new { searchString = TempData["searchString"] })
