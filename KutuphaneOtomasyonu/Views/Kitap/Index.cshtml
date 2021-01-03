@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Kitap>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kitaplar";
 }
 
 
@@ -33,95 +33,4 @@
 </div>
 
 
-
-
-
-
-<p>
-    @*<a asp-action="Create">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Yazar)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.OduncDurumu)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ISBN)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EserAdi)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BaskiSayisi)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.SayfaSayisi)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Kapak)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Icerik)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Tur)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Yayinevi)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Dil)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-        @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Yazar.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OduncDurumu)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ISBN)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EserAdi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BaskiSayisi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SayfaSayisi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kapak)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Icerik)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tur.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Yayinevi.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Dil.Id)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-        }
-            </tbody>
-        </table>*@
-    @await Component.InvokeAsync("ListKitap",new { searchString = TempData["searchString"] })
+@await Component.InvokeAsync("ListKitap",new { searchString = TempData["searchString"] })

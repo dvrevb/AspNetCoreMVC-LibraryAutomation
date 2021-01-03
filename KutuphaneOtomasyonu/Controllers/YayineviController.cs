@@ -25,23 +25,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(await _context.Yayinevi.ToListAsync());
         }
 
-        // GET: Yayinevi/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var yayinevi = await _context.Yayinevi
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (yayinevi == null)
-            {
-                return NotFound();
-            }
-
-            return View(yayinevi);
-        }
+        
 
         // GET: Yayinevi/Create
         public IActionResult Create()

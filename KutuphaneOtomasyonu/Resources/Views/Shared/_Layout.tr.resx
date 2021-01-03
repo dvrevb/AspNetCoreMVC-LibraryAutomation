@@ -159,4 +159,7 @@
   <data name="Çıkış Yap" xml:space="preserve">
     <value>Çıkış Yap</value>
   </data>
+  <data name="Ödünçler" xml:space="preserve">
+    <value>Ödünçler</value>
+  </data>
 </root>

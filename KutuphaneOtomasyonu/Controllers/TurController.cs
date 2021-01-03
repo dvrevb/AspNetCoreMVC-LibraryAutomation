@@ -26,22 +26,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: Tur/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tur = await _context.Tur
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tur == null)
-            {
-                return NotFound();
-            }
-
-            return View(tur);
-        }
+       
 
         // GET: Tur/Create
         public IActionResult Create()

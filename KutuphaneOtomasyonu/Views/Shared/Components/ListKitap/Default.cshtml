@@ -44,11 +44,8 @@
                         <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
                         <br /><br />
                     }
-
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
                     <a class="btn btn-primary " asp-controller="Kitap" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
-
-
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>               
                 </div>
             </div>
         </div>

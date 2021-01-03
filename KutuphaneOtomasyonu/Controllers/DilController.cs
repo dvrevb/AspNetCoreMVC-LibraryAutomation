@@ -25,23 +25,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(await _context.Dil.ToListAsync());
         }
 
-        // GET: Dil/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var dil = await _context.Dil
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (dil == null)
-            {
-                return NotFound();
-            }
-
-            return View(dil);
-        }
+  
 
         // GET: Dil/Create
         public IActionResult Create()

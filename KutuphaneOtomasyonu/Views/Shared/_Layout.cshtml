@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - KutuphaneOtomasyonu</title>
+    <title>Kutuphane</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
     <link rel="stylesheet" href="~/css/site.css" />
@@ -59,19 +59,17 @@
                                     <a class="nav-link text-white" asp-area="" asp-controller="Raf" asp-action="Index"> @localizer["Raflar"]   </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="nav-link text-white" asp-area="" asp-controller="Ayirttirilanlar" asp-action="Index"> @localizer["Ayırttırılanlar"]  </a>
-
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Odunc" asp-action="Index"> @localizer["Ödünçler"]  </a>
 
 
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <partial name="_Culture" />
-                            </li>
+
                             <li class="nav-item">
                                 <form method="post" asp-area="Identity" asp-page="/Account/Logout">
                                     <button type="submit" class="nav-link" btn btn-link
                                             style="width:auto;background-color:transparent;border:unset;color:white">
-                                        @localizer["Çıkış Yap"] 
+                                        @localizer["Çıkış Yap"]
                                     </button>
                                 </form>
                             </li>
@@ -85,6 +83,9 @@
                                 <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">    @localizer["Kayıt Ol"]  </a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <partial name="_Culture" />
+                        </li>
                     </ul>
                 </div>
             </div>

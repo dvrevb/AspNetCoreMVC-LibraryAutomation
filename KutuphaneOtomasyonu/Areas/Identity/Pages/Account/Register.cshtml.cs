@@ -86,7 +86,7 @@ namespace KutuphaneOtomasyonu.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Parola en az 6, en fazla 100 karakter içermelidir.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Parola en az 3, en fazla 100 karakter içermelidir.", MinimumLength = 3)]
             [DataType(DataType.Password)]
             [Display(Name = "Parola")]
             public string Password { get; set; }

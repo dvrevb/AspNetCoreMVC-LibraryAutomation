@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Yazar>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Yazarlar";
 }
 
-<h1>Index</h1>
+<h1>Yazarlar</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Yeni Oluştur</a>
 </p>
 <table class="table">
     <thead>
@@ -31,9 +31,18 @@
                 @Html.DisplayFor(modelItem => item.Soyad)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <form asp-action="Edit" method="get" style="display:inline-block">
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <button type="submit" class="btn fas fa-edit " style="float:right" title="Yazar Düzenle" />
+                </form>
+                <form asp-action="Delete" method="post" style="display:inline-block">
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <button type="submit" class="btn fas fa-trash " style="float:right" title="Yazar Sil" />
+                </form>
+                <form asp-action="Details" method="get" style="display:inline-block">
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <button type="submit" class="btn fas fa-info-circle " style="float:right" title="Yazar Detayları" />
+                </form>
             </td>
         </tr>
 }

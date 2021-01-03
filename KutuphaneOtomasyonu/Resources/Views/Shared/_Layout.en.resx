@@ -159,4 +159,7 @@
   <data name="Çıkış Yap" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="Ödünçler" xml:space="preserve">
+    <value>Borrowed Books</value>
+  </data>
 </root>

@@ -25,23 +25,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(await _context.Raf.ToListAsync());
         }
 
-        // GET: Raf/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var raf = await _context.Raf
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (raf == null)
-            {
-                return NotFound();
-            }
-
-            return View(raf);
-        }
+       
 
         // GET: Raf/Create
         public IActionResult Create()
