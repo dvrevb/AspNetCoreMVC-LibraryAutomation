@@ -26,19 +26,19 @@ namespace KutuphaneOtomasyonu.ViewComponents
                
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(s=>s.EserAdi.Contains(searchString)).ToListAsync();
+                    var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Include(k=>k.Raf).Where(s=>s.EserAdi.Contains(searchString)).ToListAsync();
                     return View(await kitaplar);
                 }
                 else
                 {
-                    var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).ToListAsync();
+                    var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Include(k => k.Raf).ToListAsync();
                     return View(await kitaplar);
                 }
                
             }
             else
             {
-                var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(x => x.YazarId == yazarId).ToListAsync();
+                var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k=>k.Raf).Include(k => k.Yazar).Include(k => k.Raf).Where(x => x.YazarId == yazarId).ToListAsync();
                 return View(await kitaplar);
             }
         }

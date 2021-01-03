@@ -19,12 +19,12 @@ namespace KutuphaneOtomasyonu.ViewComponents
         {
             if (!String.IsNullOrEmpty(searchString))
             {
-                var sureliYayinlar = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).Where(s => s.EserAdi.Contains(searchString)).ToListAsync();
+                var sureliYayinlar = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).Include(k => k.Raf).Where(s => s.EserAdi.Contains(searchString)).ToListAsync();
                 return View(await sureliYayinlar);
             }
             else
             {
-                var sureliYayinlar = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).ToListAsync();
+                var sureliYayinlar = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).Include(k => k.Raf).ToListAsync();
                 return View(await sureliYayinlar);
             }
         }

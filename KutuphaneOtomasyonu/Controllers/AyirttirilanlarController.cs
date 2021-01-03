@@ -1,5 +1,6 @@
 ﻿using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
+   
     public class AyirttirilanlarController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -17,12 +19,13 @@ namespace KutuphaneOtomasyonu.Controllers
         {
             _context = context;
         }
-        //admin
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var ayirttirilanlar = _context.Ayirttirilanlar.Include(k => k.User).Include(k => k.Kitap).ToList();
             return View(ayirttirilanlar);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Ayirttirilanlar ayirtilan)
         {
@@ -30,9 +33,7 @@ namespace KutuphaneOtomasyonu.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Kitap");
         }
-
-
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -50,7 +51,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int Id)

@@ -20,12 +20,16 @@
                     <p class="card-text"><b>Sayfa Sayısı: </b> @item.SayfaSayisi</p>
                     <p class="card-text"><b>Baskı Sayısı: </b> @item.BaskiSayisi</p>
                     <p class="card-text"><b>Dil: </b> @item.Dil.DilAd</p>
+                    <p class="card-text"><b>Raf: </b> @item.Raf.RafNo</p>
 
                     <p class="card-text" style="color:green"><b>Durum: Rafta. Süreli yayınlar ödünç alınamaz. </b> </p>
-                    <br /><br />
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
-                    <a class="btn btn-primary" asp-controller="SureliYayin" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
-                </div>
+                    <br />
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
+                    }
+                        <a class="btn btn-primary" asp-controller="SureliYayin" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
+                    </div>
             </div>
         </div>
     </div>

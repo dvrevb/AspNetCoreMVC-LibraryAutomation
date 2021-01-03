@@ -22,12 +22,12 @@
                     <p class="card-text"><b>Sayfa Sayısı: </b> @item.SayfaSayisi</p>
                     <p class="card-text"><b>Baskı Sayısı: </b> @item.BaskiSayisi</p>
                     <p class="card-text"><b>Dil: </b> @item.Dil.DilAd</p>
-
+                    <p class="card-text"><b>Raf: </b> @item.Raf.RafNo</p>
 
                     @if (item.OduncDurumu == false)
                     {
                         <p class="card-text" style="color:green"><b>Durum: Rafta </b> </p>
-                        <br /><br />
+                        <br />
                         @if (User.IsInRole("User"))
                         {
                             <form asp-controller="Ayirttirilanlar" asp-action="Create" method="post" style="display:inline-block">
@@ -42,10 +42,13 @@
                     else
                     {
                         <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
-                        <br /><br />
+                        <br />
                     }
                     <a class="btn btn-primary " asp-controller="Kitap" asp-action="Details" asp-route-id=@item.Id>Detaylar</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>               
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzenle</a>
+                    }
                 </div>
             </div>
         </div>

@@ -5,10 +5,12 @@
 }
 
 <h1>Yazarlar</h1>
-
-<p>
-    <a asp-action="Create">Yeni Oluştur</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Yeni Oluştur</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -22,29 +24,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soyad)
-            </td>
-            <td>
-                <form asp-action="Edit" method="get" style="display:inline-block">
-                    <input type="hidden" name="Id" value="@item.Id" />
-                    <button type="submit" class="btn fas fa-edit " style="float:right" title="Yazar Düzenle" />
-                </form>
-                <form asp-action="Delete" method="post" style="display:inline-block">
-                    <input type="hidden" name="Id" value="@item.Id" />
-                    <button type="submit" class="btn fas fa-trash " style="float:right" title="Yazar Sil" />
-                </form>
-                <form asp-action="Details" method="get" style="display:inline-block">
-                    <input type="hidden" name="Id" value="@item.Id" />
-                    <button type="submit" class="btn fas fa-info-circle " style="float:right" title="Yazar Detayları" />
-                </form>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyad)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <form asp-action="Edit" method="get" style="display:inline-block">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <button type="submit" class="btn fas fa-edit " style="float:right" title="Yazar Düzenle" />
+                        </form>
+                        <form asp-action="Delete" method="post" style="display:inline-block">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <button type="submit" class="btn fas fa-trash " style="float:right" title="Yazar Sil" />
+                        </form>
+                    }
+                    <form asp-action="Details" method="get" style="display:inline-block">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <button type="submit" class="btn fas fa-info-circle " style="float:right" title="Yazar Detayları" />
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

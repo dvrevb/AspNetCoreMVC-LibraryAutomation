@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
@@ -43,15 +44,13 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(yazar);
         }
 
-        // GET: Yazar/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Yazar/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Ad,Soyad")] Yazar yazar)
@@ -65,7 +64,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(yazar);
         }
 
-        // GET: Yazar/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,9 +80,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(yazar);
         }
 
-        // POST: Yazar/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Ad,Soyad")] Yazar yazar)
@@ -116,7 +113,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(yazar);
         }
 
-        // GET: Yazar/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +131,7 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(yazar);
         }
 
-        // POST: Yazar/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

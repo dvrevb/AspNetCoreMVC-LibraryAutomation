@@ -24,6 +24,7 @@ namespace KutuphaneOtomasyonu.Controllers
 
         public IActionResult Index(string searchString)
         {
+
             TempData["searchString"]= searchString;
             return View();
         }

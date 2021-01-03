@@ -23,7 +23,7 @@
                 <p class="card-text"><b>Baskı Sayısı: </b> @Model.BaskiSayisi</p>
                 <p class="card-text"><b>Dil: </b> @Model.Dil.DilAd</p>
                 <p class="card-text"><b>Hakkında: </b> @Model.Icerik</p>
-
+                <p class="card-text"><b>Raf: </b> @Model.Raf.RafNo</p>
 
                 @if (Model.OduncDurumu == false)
                 {
@@ -45,8 +45,10 @@
                     <p class="card-text" style="color:red"><b>Durum: Ödünç alınmış</b> </p>
                     <br /><br />
                 }
-
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+                }
                 <a asp-action="Index" class="btn btn-primary ">Kitaplara geri dön</a>
             </div>
         </div>
