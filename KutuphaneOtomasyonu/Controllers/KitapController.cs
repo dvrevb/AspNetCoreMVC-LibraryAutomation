@@ -59,8 +59,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: Kitap/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
@@ -101,8 +100,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: Kitap/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
