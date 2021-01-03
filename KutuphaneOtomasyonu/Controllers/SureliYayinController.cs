@@ -19,12 +19,7 @@ namespace KutuphaneOtomasyonu.Controllers
             _context = context;
         }
 
-        // GET: SureliYayin
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi);
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
+       
 
 
         public IActionResult Index(string searchString)
@@ -67,8 +62,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: SureliYayin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] SureliYayin sureliYayin)
@@ -107,8 +101,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: SureliYayin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Tarih,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] SureliYayin sureliYayin)
