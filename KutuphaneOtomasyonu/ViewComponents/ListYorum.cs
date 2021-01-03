@@ -31,35 +31,7 @@ namespace KutuphaneOtomasyonu.ViewComponents
                 return View(await yorumlar);
             }
 
-            //    if (yazarId == null)
-            //    {
-            //        //var kitaplar = _db.Kitap.ToListAsync();
-            //        //return View(await kitaplar);
-
-            //        if (!String.IsNullOrEmpty(searchString))
-            //        {
-            //            //kitaplar = kitaplar.Where(s => s.EserAdi.Contains(searchString));
-            //            var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(s => s.EserAdi.Contains(searchString)).ToListAsync();
-            //            return View(await kitaplar);
-            //        }
-            //        else
-            //        {
-            //            var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).ToListAsync();
-            //            return View(await kitaplar);
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        var kitaplar = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).Where(x => x.YazarId == yazarId).ToListAsync();
-
-
-            //        // var kitaplar = _db.Kitap.Where(x => x.YazarId == yazarId).ToListAsync();
-            //        return View(await kitaplar);
-            //    }
-
-
-            //}
+     
         }
     }
 }

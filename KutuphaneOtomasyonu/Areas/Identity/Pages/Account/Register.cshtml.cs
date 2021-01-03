@@ -62,12 +62,6 @@ namespace KutuphaneOtomasyonu.Areas.Identity.Pages.Account
             public Cinsiyet Cinsiyet { get; set; }
 
 
-
-            //[Required]
-            //[Display(Name = "Telefon Numarası")]
-            //[RegularExpression(@"^(0(\d{3}) (\d{3}) (\d{2}) (\d{2}))$", ErrorMessage = "Lütfen geçerli bir telefon numarası giriniz")]
-            //public string TelefonNumarasi { get; set; }
-
             [Required]
             [DataType(DataType.Date)]
             [Display(Name = "Doğum Tarihi")]
