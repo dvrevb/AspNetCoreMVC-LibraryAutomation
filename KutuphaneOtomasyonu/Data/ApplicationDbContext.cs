@@ -14,18 +14,8 @@ namespace KutuphaneOtomasyonu.Data
         {
         }
 
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    base.OnModelCreating(builder);
-        //    builder.Entity<KisiselBilgiler>(b =>
-        //    {
-        //        b.Property(u => u.Email).HasColumnName("EPostaAdresi");
-        //    });
-        //}
 
-        public DbSet<Dil> Dil { get; set; }
-        
-       // public DbSet<KisiselBilgiler> KisiselBilgiler { get; set; }
+        public DbSet<Dil> Dil { get; set; }        
         public DbSet<Kitap> Kitap { get; set; }
         public DbSet<SureliYayin> SureliYayin { get; set; }
         public DbSet<Tur> Tur { get; set; }
