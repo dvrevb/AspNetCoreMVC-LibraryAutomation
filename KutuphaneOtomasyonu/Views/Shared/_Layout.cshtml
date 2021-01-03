@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,15 +27,15 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">@localizer["Anasayfa"]</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Eserler
+                                @localizer["Eserler"]
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Kitap" asp-action="Index">Kitaplar</a>
-                                <a class="nav-link text-white" asp-area="" asp-controller="SureliYayin" asp-action="Index">Süreli Yayınlar</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Kitap" asp-action="Index">@localizer["Kitaplar"]</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="SureliYayin" asp-action="Index">@localizer["Süreli Yayınlar"]</a>
 
                             </div>
                         </li>
@@ -44,30 +45,33 @@
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Admin
+                                    @localizer["Admin"]
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Kitap" asp-action="Index">Kitaplar</a>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="SureliYayin" asp-action="Index">Süreli Yayınlar</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Kitap" asp-action="Index"> @localizer["Kitaplar"] </a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="SureliYayin" asp-action="Index">@localizer["Süreli Yayınlar"]  </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Yazar" asp-action="Index">Yazarlar</a>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Yayinevi" asp-action="Index">Yayınevleri</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Yazar" asp-action="Index"> @localizer["Yazarlar"]  </a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Yayinevi" asp-action="Index"> @localizer["Yayınevleri"]   </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Dil" asp-action="Index">Diller</a>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Tur" asp-action="Index">Türler</a>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Raf" asp-action="Index">Raflar</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Dil" asp-action="Index"> @localizer["Diller"]    </a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Tur" asp-action="Index"> @localizer["Türler"]    </a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Raf" asp-action="Index"> @localizer["Raflar"]   </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Ayirttirilanlar" asp-action="Index">Ayırttırılanlar</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Ayirttirilanlar" asp-action="Index"> @localizer["Ayırttırılanlar"]  </a>
 
 
 
                                 </div>
                             </li>
                             <li class="nav-item">
+                                <partial name="_Culture" />
+                            </li>
+                            <li class="nav-item">
                                 <form method="post" asp-area="Identity" asp-page="/Account/Logout">
                                     <button type="submit" class="nav-link" btn btn-link
                                             style="width:auto;background-color:transparent;border:unset;color:white">
-                                        Çıkış Yap
+                                        @localizer["Çıkış Yap"] 
                                     </button>
                                 </form>
                             </li>
@@ -75,10 +79,10 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+                                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Login">   @localizer["Giriş Yap"]  </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">Kayıt Ol</a>
+                                <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">    @localizer["Kayıt Ol"]  </a>
                             </li>
                         }
                     </ul>
@@ -100,7 +104,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

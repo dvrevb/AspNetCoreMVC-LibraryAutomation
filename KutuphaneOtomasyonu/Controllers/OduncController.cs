@@ -24,8 +24,6 @@ namespace KutuphaneOtomasyonu.Controllers
         [HttpPost]
         public ActionResult Create(Odunc odunc,int ayirtmaId)
         {
-            //ClaimsPrincipal currentUser = this.User;
-            //var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             _context.Odunc.Add(odunc);
             _context.SaveChanges();
             

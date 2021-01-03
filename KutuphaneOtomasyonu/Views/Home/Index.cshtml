@@ -1,4 +1,4 @@
-﻿@model KutuphaneOtomasyonu.Models.Eser
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @{
     ViewData["Title"] = "Kütüphane";
     var sonKitapKapak = ViewBag.sonKitapKapak;
@@ -20,12 +20,12 @@
                                 <div class="row no-gutters">
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                         <select class="form-control" id="exampleFormControlSelect1" name="Secim">
-                                            <option value="Kitap">Kitap</option>
-                                            <option value="SureliYayin">Süreli Yayın</option>            
+                                            <option value="Kitap">@localizer["Kitap"]</option>
+                                            <option value="SureliYayin">@localizer["Süreli Yayın"]</option>            
                                         </select>
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                        <input type="text" placeholder="Aramanızı giriniz..." class="form-control" id="search" name="SearchString">
+                                        <input type="text" placeholder="@localizer["Aramanızı giriniz..."]" class="form-control" id="search" name="SearchString">
                                     </div>
                                     <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                         <button type="submit" class="btn btn-base" value="filter">
@@ -51,38 +51,38 @@
     <div class="row">
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
-                <h4 class="card-header">Son Eklenen Kitap</h4>
+                <h4 class="card-header">@localizer["Son Eklenen Kitap"]</h4>
                 <div class="card-body">
                     <a asp-controller="Kitap" asp-action="Details" asp-route-id="@sonKitapId">
                         <img class="img-fluid rounded" style="height:400px;width:400px" src="@sonKitapKapak" alt="">
                     </a>                   
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="Kitap" asp-action="Index" class="btn btn-primary">Tüm Kitaplar</a>
+                    <a asp-controller="Kitap" asp-action="Index" class="btn btn-primary">@localizer["Tüm Kitaplar"]</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
-                <h4 class="card-header">Son Yorumlar</h4>
+                <h4 class="card-header">@localizer["Son Yorumlar"]</h4>
                 <div class="card-body">
                     @await Component.InvokeAsync("ListYorum")
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="Yorum" asp-action="Index" class="btn btn-primary">Tüm Yorumları Gör</a>
+                    <a asp-controller="Yorum" asp-action="Index" class="btn btn-primary">@localizer["Tüm Yorumları Gör"]</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
-                <h4 class="card-header">Son Eklenen Süreli Yayın</h4>
+                <h4 class="card-header">@localizer["Son Eklenen Süreli Yayın"]</h4>
                 <div class="card-body">
                     <a asp-controller="SureliYayin" asp-action="Details" asp-route-id="@sonSureliYayinId">
                         <img class="img-fluid rounded" style="height:400px;width:400px" src="@sonSureliYayinKapak" alt="">
                     </a>
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="SureliYayin" asp-action="Index" class="btn btn-primary">Tüm Süreli Yayınlar</a>
+                    <a asp-controller="SureliYayin" asp-action="Index" class="btn btn-primary">@localizer["Tüm Süreli Yayınlar"]</a>
                 </div>
             </div>
         </div>
