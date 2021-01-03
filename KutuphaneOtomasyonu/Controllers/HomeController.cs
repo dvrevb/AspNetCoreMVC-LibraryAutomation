@@ -23,11 +23,23 @@ namespace KutuphaneOtomasyonu.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.sonKitap = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).OrderByDescending(p => p.Id).Take(1).ToList();
-            ViewBag.sonSureliYayin = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).OrderByDescending(p => p.Id).Take(1).ToList();
+            var sonKitap = _db.Kitap.Include(k => k.Dil).Include(k => k.Tur).Include(k => k.Yayinevi).Include(k => k.Yazar).OrderByDescending(p => p.Id).Take(1).ToList();
+            foreach (var item in sonKitap)
+            {
+                ViewBag.sonKitapKapak = item.Kapak;
+                ViewBag.sonKitapId = item.Id;
+            }
+            var sonSureliYayin = _db.SureliYayin.Include(s => s.Dil).Include(s => s.Tur).Include(s => s.Yayinevi).OrderByDescending(p => p.Id).Take(1);
+            foreach (var item in sonSureliYayin)
+            {
+                ViewBag.sonSureliYayinKapak = item.Kapak;
+                ViewBag.sonSureliYayinId = item.Id;
+            }
+
+            
             return View();
         }
-        public IActionResult ara(string SearchString,string Secim)
+        public IActionResult Ara(string SearchString,string Secim)
         {
             if (Secim=="Kitap")
             {
@@ -37,11 +49,6 @@ namespace KutuphaneOtomasyonu.Controllers
             {
                 return RedirectToAction("Index", "SureliYayin", new { SearchString = SearchString });
             }         
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

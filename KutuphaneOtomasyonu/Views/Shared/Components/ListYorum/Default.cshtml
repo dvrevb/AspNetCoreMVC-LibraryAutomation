@@ -6,13 +6,10 @@
 
     <div class="be-comment">
         <div class="be-img-comment">
-            <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-            </a>
+                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">      
         </div>
         <div class="be-comment-content">
             <div class="row">
-
                 <div class="be-comment-name col-lg-4">
                     <a href="blog-detail-2.html">@item.User.UserName</a>
                 </div>
@@ -24,16 +21,12 @@
                         <button type="submit" class="btn fas fa-trash " style="float:right" />
                     </form>
                 </div>
-
-
-
-
             </div>
-
-
-            <p class="be-comment-text">
-                @item.Icerik
-            </p>
+            <a asp-controller="Kitap" asp-action="Details" asp-route-id="@item.KitapId">
+                <p class="be-comment-text">
+                    @item.Icerik
+                </p>
+            </a>
         </div>
     </div>
 }

@@ -31,14 +31,6 @@ namespace KutuphaneOtomasyonu.Controllers
         // GET: Kitap/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-          //  ClaimsPrincipal currentUser = this.User;
-           // var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-          //  ViewBag.userId = currentUserID;
-           // if (id == null)
-           // {
-           //     return NotFound();
-          //  }
-
             var kitap = await _context.Kitap
                 .Include(k => k.Dil)
                 .Include(k => k.Tur)
