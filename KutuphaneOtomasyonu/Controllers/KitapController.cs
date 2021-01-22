@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
@@ -46,6 +47,7 @@ namespace KutuphaneOtomasyonu.Controllers
 
             return View(kitap);
         }
+        [Authorize(Roles ="Admin")]
 
         // GET: Kitap/Create
         public IActionResult Create()
@@ -59,7 +61,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: Kitap/Create
-       
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
@@ -79,6 +81,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: Kitap/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,7 +103,8 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: Kitap/Edit/5
-        
+        [Authorize(Roles = "Admin")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("YazarId,OduncDurumu,Id,ISBN,EserAdi,BaskiSayisi,SayfaSayisi,Kapak,Icerik,TurId,YayineviId,DilId,RafId")] Kitap kitap)
@@ -139,6 +143,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: Kitap/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -161,6 +166,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // POST: Kitap/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
